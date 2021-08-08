@@ -18,12 +18,12 @@ function confirmData (e) {
     getWeatherApi(baseURL,newZip,apiKey)
 
     .then(function(data){
-        console.log(data);
+    postData('/add', {date:newDate, temp:data.main.temp, content:feelings})
+    .then (() => {updateUI()
+    });
+});
 
-        postData('/add', {date:d, temp:data.list[0].main.temp, content:feelings})
-    .then (updateUI())
-    })
-};
+}
 
 const getWeatherApi = async (baseURL,newZip,apiKey) => {
     const response = await fetch(baseURL+newZip+apiKey)
@@ -58,11 +58,11 @@ const postData = async (url = '', data = {}) => {
 }
 
 const updateUI = async () => {
-    const request = await fetch ('\all');
+    const request = await fetch ('/all');
     try{
         const allData = await request.json();
-        document.getElementById('date').innerHTML = `Date: $(allData[0].date)`;
-        document.getElementById('temp').innerHTML = `weather: $(allData[0].temp)`;
+        document.getElementById('date').innerHTML = `date: $(allData[0].date)`;
+        document.getElementById('temp').innerHTML = `temp: $(allData[0].temp)`;
         document.getElementById('content').innerHTML = `I feel: $(allData[0].content)`;
     }catch(error){
         console.log("error", error);}
