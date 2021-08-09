@@ -5,7 +5,7 @@ let d = new Date();
 let newDate = d.getMonth()+'.'+ d.getDate()+'.'+ d.getFullYear();
 
 let baseURL = 'https://api.openweathermap.org/data/2.5/weather?zip=';
-let apiKey = '&appid=bd2b98e03e8840ae15485bdb146578b0';
+let apiKey = '&appid=2b98e03e8840ae15485bdb146578b0';
 
 
 const generate = document.getElementById('generate');
@@ -19,8 +19,7 @@ function confirmData (e) {
 
     .then(function(data){
         console.log(data);
-
-        postData('/add', {date:d, temp:data.list[0].main.temp, content:feelings})
+        postData('/add', {date:d, temp:data.main.temp, content:feelings})
     .then (updateUI())
     })
 };
@@ -58,12 +57,12 @@ const postData = async (url = '', data = {}) => {
 }
 
 const updateUI = async () => {
-    const request = await fetch ('\all');
+    const request = await fetch ('/all');
     try{
         const allData = await request.json();
-        document.getElementById('date').innerHTML = `Date: $(allData[0].date)`;
-        document.getElementById('temp').innerHTML = `weather: $(allData[0].temp)`;
-        document.getElementById('content').innerHTML = `I feel: $(allData[0].content)`;
+        document.getElementById('date').innerHTML = "Date: "+(allData.date);
+        document.getElementById('temp').innerHTML = "weather: "+(allData.temp);
+        document.getElementById('content').innerHTML = "I feel: "+(allData.content);
     }catch(error){
         console.log("error", error);}
 }

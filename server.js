@@ -22,7 +22,7 @@ app.use(express.static('website'));
 
 // Setup Server
 
-const port = 3000;
+const port = 8080;
 const server = app.listen(port,listening);
 
 function listening (){
@@ -32,25 +32,11 @@ function listening (){
 
 //Setting up the GET request
 
-app.get('\all', sendData);
-
+app.get('/all', sendData);
 function sendData (req, res) {
     res.send(projectData);
-
 }
-
-//Setting up the POST request
-
-app.post('/add', weatherInfo);
-
-function weatherInfo(req,res){
-  res.send('POST received');
-}
-
-const data = [];
-
-app.post('\add', entryHolder);
-
+app.post('/add', entryHolder);
 function entryHolder (req, res){
     console.log(req.body)
    let newEntry = {
@@ -58,7 +44,7 @@ function entryHolder (req, res){
         temp: req.body.temp,
         content: req.body.content
     }
-    data.push(newEntry);
+    projectData=newEntry;
+    res.send(projectData)
 }
-
 
