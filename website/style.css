@@ -35,6 +35,10 @@ label {
     font-size: 18px;
 }
 
+#date {
+    color: white;
+}
+
 input {
     display:block;
     height: 60px;

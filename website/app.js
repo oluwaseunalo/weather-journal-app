@@ -5,7 +5,7 @@ let d = new Date();
 let newDate = d.getMonth()+'.'+ d.getDate()+'.'+ d.getFullYear();
 
 let baseURL = 'https://api.openweathermap.org/data/2.5/weather?zip=';
-let apiKey = '&appid=2b98e03e8840ae15485bdb146578b0';
+let apiKey = '&appid=2b98e03e8840ae15485bdbdb146578b0';
 
 
 const generate = document.getElementById('generate');
@@ -28,7 +28,7 @@ const getWeatherApi = async (baseURL,newZip,apiKey) => {
     const response = await fetch(baseURL+newZip+apiKey)
     try{
         const data = await response.json();
-        //console.log(data);
+        console.log(data);
         return data;
     }
     catch (error){
@@ -48,7 +48,7 @@ const postData = async (url = '', data = {}) => {
         });
     try {
         const newData = await response.json();
-        //console.log(newData);
+        console.log(newData);
         return newData;
     }
     catch(error){
