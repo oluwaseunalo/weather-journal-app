@@ -5,8 +5,8 @@ let d = new Date();
 let newDate = d.getMonth()+'.'+ d.getDate()+'.'+ d.getFullYear();
 
 // Setting up the baseURL and the apiKey retrieved from the website
-let baseURL = 'https://api.openweathermap.org/data/2.5/weather?zip=';
-let apiKey = '&appid=2b98e03e8840ae15485bdbdb146578b0';
+const baseURL = 'https://api.openweathermap.org/data/2.5/weather?zip=';
+const apiKey = '&appid=2b98e03e8840ae15485bdbdb146578b0&units=metric';
 
 // Setting up the client to retrieve, post and dynamically update the data from the API
 const generate = document.getElementById('generate');
