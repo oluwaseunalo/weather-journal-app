@@ -8,8 +8,7 @@ const express = require('express');
 const app = express();
 
 /* Middleware*/
-//Here we are configuring express to use body-parser as middle-ware.
-
+//Configuring the latest express version with body-parser in the default.
 app.use(express.urlencoded({extended: true}));
 app.use(express.json());
 // Cors for cross origin allowance
@@ -30,21 +29,21 @@ function listening (){
     console.log(`running on the localhost:$(port)`);
 }
 
-//Setting up the GET request
+//Setting up the GET & POST request
 
-app.get('/all', sendData);
+app.get('/retrieveData', sendData);
 function sendData (req, res) {
     res.send(projectData);
 }
-app.post('/add', entryHolder);
+app.post('/includeData', entryHolder);
 function entryHolder (req, res){
     console.log(req.body)
-   let newEntry = {
+   let newUpdate = {
         date: req.body.date,
         temp: req.body.temp,
         content: req.body.content
     }
-    projectData=newEntry;
+    projectData=newUpdate;
     res.send(projectData)
 }
 
