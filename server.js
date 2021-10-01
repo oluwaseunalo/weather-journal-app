@@ -27,7 +27,7 @@ const server = app.listen(port,listening);
 
 function listening (){
     console.log('server is running');
-    console.log(`running on the localhost:$(port)`);
+    console.log(`running on the localhost:${port}`);
 }
 
 //Setting up the GET & POST request
